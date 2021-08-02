@@ -1,5 +1,6 @@
-f = open('/home/user/level09/token')
-tmp = f.read
+import sys
+f = sys.stdin
+tmp = f.read()
 res = ''
 i = 0
 while i < (len(tmp) - 1):
