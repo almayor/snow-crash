@@ -1,0 +1,1 @@
+while true; do ln -s -f test link; ln -s -f token link; done
